@@ -1,13 +1,21 @@
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import React from 'react';
+import React, {Fragment} from 'react';
 
-import {View, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet} from 'react-native';
+import TabsBottom from './tabs/TabsBottom';
 
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  return <View></View>;
+  return (
+    // <View>
+    //   <Text>ff</Text>
+    // </View>
+    <Fragment>
+      <TabsBottom />
+    </Fragment>
+  );
 };
 
 const styles = StyleSheet.create({});

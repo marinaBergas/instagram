@@ -17,11 +17,13 @@ class Stories extends Component<Props, State> {
   render() {
     return (
       <View style={styles.container}>
-        <Image
-          style={styles.imageCont}
-          source={this.props.personImage}
-          resizeMode="stretch"
-        />
+        <View style={styles.imageCont}>
+          <Image
+            style={styles.image}
+            source={this.props.personImage}
+            resizeMode="stretch"
+          />
+        </View>
         <Text style={styles.text}>{this.props.personName}</Text>
       </View>
     );
@@ -37,17 +39,25 @@ const styles = StyleSheet.create({
     marginVertical: 5,
     width: 100,
     height: 100,
+    textAlign: 'center',
+    alignItems: 'center',
   },
   buttonCont: {
     flexDirection: 'row',
   },
   imageCont: {
-    borderRadius: width / 2,
+    width: 75,
+    // marginVertical: 50,
+    borderWidth: 5,
+    borderRadius: 1000,
+    borderColor: '#262',
+    // borderTopLeftRadius: 1000,
+    // borderTopRightRadius: 1000,
     textAlign: 'center',
 
-    width: 80,
-    height: 80,
+    height: 75,
   },
+  image: {width: 65, height: 65, borderRadius: 2000, textAlign: 'center'},
   text: {
     textAlign: 'center',
   },

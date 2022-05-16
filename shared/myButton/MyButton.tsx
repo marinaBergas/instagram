@@ -1,9 +1,10 @@
-import {TouchableHighlight, StyleSheet} from 'react-native';
+import {TouchableHighlight, StyleSheet, Image} from 'react-native';
 import React, {Component} from 'react';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 interface Props {
-  iconName: string;
+  iconName?: string;
+  imgName?: string;
 }
 class MyButton extends Component<Props> {
   constructor(props) {
@@ -13,13 +14,16 @@ class MyButton extends Component<Props> {
     return (
       <TouchableHighlight onPress={() => {}} style={styles.button}>
         <TouchableHighlight activeOpacity={0.2} underlayColor="#ddd000">
-          <FontAwesome5
-            name={this.props.iconName}
-            color="#000"
-            style={styles.icon}
-          />
+          {this.props.iconName ? (
+            <FontAwesome5
+              name={this.props.iconName}
+              color="#000"
+              style={styles.icon}
+            />
+          ) : (
+            <Image source={this.props.imgName} style={styles.icon} />
+          )}
         </TouchableHighlight>
-        {/* <FontAwesome5 name="Home" color="#000" /> */}
       </TouchableHighlight>
     );
   }
@@ -33,5 +37,9 @@ const styles = StyleSheet.create({
   },
   icon: {
     fontSize: 15,
+    width: 15,
+    height: 15,
+    marginHorizontal: 1,
+
   },
 });

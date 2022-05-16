@@ -1,6 +1,8 @@
-import {Text, View, StyleSheet} from 'react-native';
+import {Text, View, StyleSheet,Image} from 'react-native';
 import React, {Component} from 'react';
 import MyButton from '../shared/myButton/MyButton';
+import share from '../assets/image/share.png';
+import instLogo from '../assets/image/logo.png'
 interface Props {
   title: string;
 }
@@ -12,11 +14,11 @@ export default class MyHeader extends Component<Props> {
   render() {
     return (
       <View style={styles.container}>
-        <Text>{this.props.title}</Text>
+        <Image source={instLogo}/>
         <View style={styles.buttonCont}>
           <MyButton iconName="plus-square" />
           <MyButton iconName="heart" />
-          <MyButton iconName="facebook-messenger" />
+          <MyButton imgName={share} />
         </View>
       </View>
     );

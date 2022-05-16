@@ -36,27 +36,29 @@ class Home extends Component {
   // state = { :  }
   render() {
     return (
-      <View>
-        <View style={styles.container}>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-            {personList.map(el => {
+      <View style={styles.container}>
+        <ScrollView vertical>
+          <View style={styles.storiesCont}>
+            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+              {personList.map(el => {
+                return (
+                  <Stories personName={el.userName} personImage={el.image} />
+                );
+              })}
+            </ScrollView>
+          </View>
+          <View>
+            {postList.map(el => {
               return (
-                <Stories personName={el.userName} personImage={el.image} />
+                <Posts
+                  postImage={el.postImage}
+                  personName={el.userName}
+                  personImage={el.userImage}
+                />
               );
             })}
-          </ScrollView>
-        </View>
-        <View>
-          {postList.map(el => {
-            return (
-              <Posts
-                postImage={el.postImage}
-                personName={el.userName}
-                personImage={el.userImage}
-              />
-            );
-          })}
-        </View>
+          </View>
+        </ScrollView>
       </View>
     );
   }
@@ -68,6 +70,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#dbdbdb',
     borderBottomWidth: 2,
     // marginBottom: 30,
+    backgroundColor: '##FAFAFA',
   },
   storiesCont: {
     flexDirection: 'row',
@@ -76,6 +79,7 @@ const styles = StyleSheet.create({
     // marginVertical: 2,
     // paddingHorizontal:5,
     // overFlow: 'scroll',
+    backgroundColor: '#fff',
   },
   buttonCont: {
     flexDirection: 'row',

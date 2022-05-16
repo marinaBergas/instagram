@@ -1,10 +1,13 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import {Text, View, StyleSheet, Image, Dimensions} from 'react-native';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
 import MyButton from '../../shared/myButton/MyButton';
 import {SliderBox} from 'react-native-image-slider-box';
+import share from '../../assets/image/share.png';
+import save from '../../assets/image/save.png';
 
+import MyInput from '../../shared/myInput/MyInput';
 interface Props {
   personName: string;
   personImage: string;
@@ -13,6 +16,10 @@ interface Props {
 
 interface State {}
 
+const commentList = {
+  likes: '1,700',
+  reviews: [{commentUse: 'mary', comment: 'very nice'}],
+};
 class Posts extends Component<Props, State> {
   imgArray = [];
   constructor(props) {
@@ -45,14 +52,33 @@ class Posts extends Component<Props, State> {
               height: 5,
               borderRadius: 15,
               padding: 0,
-              marginVertical: 10,
+              marginVertical: 0,
             }}
           />
         </View>
-        <View style={styles.buttonCont}>
-          <MyButton iconName="plus-square" />
-          <MyButton iconName="heart" />
-          <MyButton iconName="facebook-messenger" />
+        <View style={styles.commentHead}>
+          <View style={styles.buttonCont}>
+            <MyButton iconName="plus-square" />
+            <MyButton iconName="heart" />
+            <MyButton imgName={share} />
+          </View>
+          <View>
+            <MyButton imgName={save} />
+          </View>
+        </View>
+        <View>
+          <Text style={styles.likeText}>{commentList.likes} likes</Text>
+          {commentList.reviews.map(el => {
+            return (
+              <View style={styles.commentCont}>
+                <Text style={styles.commentText}>{el.commentUse}</Text>
+                <Text>{el.comment}</Text>
+              </View>
+            );
+          })}
+        </View>
+        <View>
+          <MyInput placeHolder={'Add a comment...'} />
         </View>
       </View>
     );
@@ -63,6 +89,10 @@ export default Posts;
 const styles = StyleSheet.create({
   container: {
     width,
+    borderWidth: 1,
+    marginVertical: 5,
+    borderColor: '#dbdbdb',
+    backgroundColor: '#fff',
   },
   headcont: {
     flexDirection: 'row',
@@ -76,6 +106,11 @@ const styles = StyleSheet.create({
   },
   buttonCont: {
     flexDirection: 'row',
+  },
+  commentHead:{
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+
   },
   imageCont: {
     width: 32,
@@ -95,5 +130,15 @@ const styles = StyleSheet.create({
   postcont: {
     width: width,
     height: 200,
+  },
+  commentCont: {
+    flexDirection: 'row',
+  },
+  commentText: {
+    marginHorizontal: 5,
+    fontWeight: '600',
+  },
+  likeText: {
+    fontWeight: '600',
   },
 });

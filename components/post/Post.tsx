@@ -1,16 +1,24 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import {Text, View, StyleSheet, Image, Dimensions} from 'react-native';
 const width = Dimensions.get('window').width;
 const height = Dimensions.get('window').height;
+import MyButton from '../../shared/myButton/MyButton';
+import {SliderBox} from 'react-native-image-slider-box';
+
 interface Props {
   personName: string;
   personImage: string;
-  postImage: string;
+  postImage: string[];
 }
 
 interface State {}
 
 class Posts extends Component<Props, State> {
+  imgArray = [];
+  constructor(props) {
+    super(props);
+    this.imgArray.push(this.props.postImage);
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -25,13 +33,27 @@ class Posts extends Component<Props, State> {
           <Text>{this.props.personName}</Text>
         </View>
         <View style={styles.postcont}>
-          <Image
+          <SliderBox
             style={styles.postImage}
-            source={this.props.postImage}
+            images={this.props.postImage}
+            sliderBoxwidth={width}
             resizeMode="stretch"
+            dotColor="#2295F7"
+            inactiveDotColor="#ACACAC"
+            dotStyle={{
+              width: 5,
+              height: 5,
+              borderRadius: 15,
+              padding: 0,
+              marginVertical: 10,
+            }}
           />
         </View>
-        <View></View>
+        <View style={styles.buttonCont}>
+          <MyButton iconName="plus-square" />
+          <MyButton iconName="heart" />
+          <MyButton iconName="facebook-messenger" />
+        </View>
       </View>
     );
   }
@@ -39,7 +61,9 @@ class Posts extends Component<Props, State> {
 
 export default Posts;
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    width,
+  },
   headcont: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -69,7 +93,7 @@ const styles = StyleSheet.create({
     height: 200,
   },
   postcont: {
-    width: 200,
+    width: width,
     height: 200,
   },
 });

@@ -13,7 +13,11 @@ class MyButton extends Component<Props> {
     return (
       <TouchableHighlight onPress={() => {}} style={styles.button}>
         <TouchableHighlight activeOpacity={0.2} underlayColor="#ddd000">
-          <FontAwesome5 name={this.props.iconName} color="#000" />
+          <FontAwesome5
+            name={this.props.iconName}
+            color="#000"
+            style={styles.icon}
+          />
         </TouchableHighlight>
         {/* <FontAwesome5 name="Home" color="#000" /> */}
       </TouchableHighlight>
@@ -25,5 +29,9 @@ export default MyButton;
 const styles = StyleSheet.create({
   button: {
     paddingHorizontal: 5,
+    paddingVertical: 10,
+  },
+  icon: {
+    fontSize: 15,
   },
 });

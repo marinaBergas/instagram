@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Text, View, StyleSheet, ScrollView, Dimensions} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import Stories from '../../components/stories/stories';
 import maryImage from '../../assets/image/mary.jpg';
 import Posts from '../../components/post/Post';
@@ -16,12 +16,12 @@ const postList = [
   {
     userName: 'mary',
     userImage: maryImage,
-    postImage: maryImage,
+    postImage: [maryImage, maryImage],
   },
   {
     userName: 'mary',
     userImage: maryImage,
-    postImage: maryImage,
+    postImage: [maryImage, maryImage, maryImage, maryImage],
   },
 ];
 
@@ -64,17 +64,16 @@ class Home extends Component {
 
 export default Home;
 const styles = StyleSheet.create({
-  container:{
+  container: {
     borderBottomColor: '#dbdbdb',
     borderBottomWidth: 2,
-    marginBottom: 30,
-
+    // marginBottom: 30,
   },
   storiesCont: {
     flexDirection: 'row',
     width: '100%',
     // justifyContent: 'space-around',
-    marginVertical: 2,
+    // marginVertical: 2,
     // paddingHorizontal:5,
     // overFlow: 'scroll',
   },

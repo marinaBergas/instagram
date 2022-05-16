@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'center',
     marginHorizontal: 5,
-    marginVertical: 5,
+    // marginVertical: 5,
     width: 100,
     height: 100,
     textAlign: 'center',

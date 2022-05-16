@@ -1,7 +1,7 @@
 import {Text, View, StyleSheet, Image, Dimensions} from 'react-native';
 import React, {Component} from 'react';
-export const width = Dimensions.get('window').width;
-export const height = Dimensions.get('window').height;
+// export const width = Dimensions.get('window').width;
+// export const height = Dimensions.get('window').height;
 interface Props {
   personName: string;
   personImage: string;

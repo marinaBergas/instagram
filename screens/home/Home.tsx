@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {Text, View, StyleSheet, ScrollView, Dimensions} from 'react-native';
 import Stories from '../../components/stories/stories';
 import maryImage from '../../assets/image/mary.jpg';
+import Posts from '../../components/post/Post';
 
 const personList = [
   {userName: 'mary', image: maryImage},
@@ -10,6 +11,18 @@ const personList = [
   {userName: 'mary', image: maryImage},
   {userName: 'mary', image: maryImage},
   {userName: 'mary', image: maryImage},
+];
+const postList = [
+  {
+    userName: 'mary',
+    userImage: maryImage,
+    postImage: maryImage,
+  },
+  {
+    userName: 'mary',
+    userImage: maryImage,
+    postImage: maryImage,
+  },
 ];
 
 class Home extends Component {
@@ -24,11 +37,26 @@ class Home extends Component {
   render() {
     return (
       <View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          {personList.map(el => {
-            return <Stories personName={el.userName} personImage={el.image} />;
+        <View style={styles.container}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            {personList.map(el => {
+              return (
+                <Stories personName={el.userName} personImage={el.image} />
+              );
+            })}
+          </ScrollView>
+        </View>
+        <View>
+          {postList.map(el => {
+            return (
+              <Posts
+                postImage={el.postImage}
+                personName={el.userName}
+                personImage={el.userImage}
+              />
+            );
           })}
-        </ScrollView>
+        </View>
       </View>
     );
   }
@@ -36,6 +64,12 @@ class Home extends Component {
 
 export default Home;
 const styles = StyleSheet.create({
+  container:{
+    borderBottomColor: '#dbdbdb',
+    borderBottomWidth: 2,
+    marginBottom: 30,
+
+  },
   storiesCont: {
     flexDirection: 'row',
     width: '100%',
